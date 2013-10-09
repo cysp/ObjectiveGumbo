@@ -511,10 +511,11 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag) {
         case OGGumboTagSTYLE: return @"STYLE";
         case OGGumboTagSCRIPT: return @"SCRIPT";
         case OGGumboTagNOSCRIPT: return @"NOSCRIPT";
+        case OGGumboTagTEMPLATE: return @"TEMPLATE";
         case OGGumboTagBODY: return @"BODY";
+        case OGGumboTagARTICLE: return @"ARTICLE";
         case OGGumboTagSECTION: return @"SECTION";
         case OGGumboTagNAV: return @"NAV";
-        case OGGumboTagARTICLE: return @"ARTICLE";
         case OGGumboTagASIDE: return @"ASIDE";
         case OGGumboTagH1: return @"H1";
         case OGGumboTagH2: return @"H2";
@@ -538,6 +539,7 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag) {
         case OGGumboTagDD: return @"DD";
         case OGGumboTagFIGURE: return @"FIGURE";
         case OGGumboTagFIGCAPTION: return @"FIGCAPTION";
+        case OGGumboTagMAIN: return @"MAIN";
         case OGGumboTagDIV: return @"DIV";
         case OGGumboTagA: return @"A";
         case OGGumboTagEM: return @"EM";
@@ -548,6 +550,7 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag) {
         case OGGumboTagQ: return @"Q";
         case OGGumboTagDFN: return @"DFN";
         case OGGumboTagABBR: return @"ABBR";
+        case OGGumboTagDATA: return @"DATA";
         case OGGumboTagTIME: return @"TIME";
         case OGGumboTagCODE: return @"CODE";
         case OGGumboTagVAR: return @"VAR";
@@ -557,6 +560,7 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag) {
         case OGGumboTagSUP: return @"SUP";
         case OGGumboTagI: return @"I";
         case OGGumboTagB: return @"B";
+        case OGGumboTagU: return @"U";
         case OGGumboTagMARK: return @"MARK";
         case OGGumboTagRUBY: return @"RUBY";
         case OGGumboTagRT: return @"RT";
@@ -620,8 +624,8 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag) {
         case OGGumboTagMETER: return @"METER";
         case OGGumboTagDETAILS: return @"DETAILS";
         case OGGumboTagSUMMARY: return @"SUMMARY";
-        case OGGumboTagCOMMAND: return @"COMMAND";
         case OGGumboTagMENU: return @"MENU";
+        case OGGumboTagMENUITEM: return @"MENUITEM";
         case OGGumboTagAPPLET: return @"APPLET";
         case OGGumboTagACRONYM: return @"ACRONYM";
         case OGGumboTagBGSOUND: return @"BGSOUND";
@@ -647,7 +651,6 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag) {
         case OGGumboTagNOBR: return @"NOBR";
         case OGGumboTagSPACER: return @"SPACER";
         case OGGumboTagTT: return @"TT";
-        case OGGumboTagU: return @"U";
         case OGGumboTagUNKNOWN: return nil;
     }
     return nil;
