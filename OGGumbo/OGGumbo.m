@@ -232,21 +232,15 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag);
                 break;
             case OGGumboNodeTypeElement: {
                 NSString *childText = ((OGGumboElementNode *)node).text;
-                if (text.length && childText.length) {
-                    [text appendString:@" "];
-                }
                 [text appendString:childText];
             } break;
-            case OGGumboNodeTypeText: {
-                NSString *childText = ((OGGumboTextNode *)node).text;
-                if (text.length && childText.length) {
-                    [text appendString:@" "];
-                }
-                [text appendString:childText];
-            } break;
+            case OGGumboNodeTypeText:
             case OGGumboNodeTypeCDATA:
+            case OGGumboNodeTypeWhitespace: {
+                NSString *childText = ((OGGumboTextNode *)node).text;
+                [text appendString:childText];
+            } break;
             case OGGumboNodeTypeComment:
-            case OGGumboNodeTypeWhitespace:
                 break;
         }
     }
@@ -346,21 +340,15 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag);
                 break;
             case OGGumboNodeTypeElement: {
                 NSString *childText = ((OGGumboElementNode *)node).text;
-                if (text.length && childText.length) {
-                    [text appendString:@" "];
-                }
                 [text appendString:childText];
             } break;
-            case OGGumboNodeTypeText: {
-                NSString *childText = ((OGGumboTextNode *)node).text;
-                if (text.length && childText.length) {
-                    [text appendString:@" "];
-                }
-                [text appendString:childText];
-            } break;
+            case OGGumboNodeTypeText:
             case OGGumboNodeTypeCDATA:
+            case OGGumboNodeTypeWhitespace: {
+                NSString *childText = ((OGGumboTextNode *)node).text;
+                [text appendString:childText];
+            } break;
             case OGGumboNodeTypeComment:
-            case OGGumboNodeTypeWhitespace:
                 break;
         }
     }
