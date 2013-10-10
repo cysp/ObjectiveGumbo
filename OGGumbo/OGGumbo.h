@@ -179,26 +179,27 @@ typedef NS_ENUM(NSUInteger, OGGumboAttributeNamespace) {
     OGGumboAttributeNamespaceXMLNS,
 };
 
+@protocol OGGumboParentNode <NSObject>
+@property (nonatomic,strong,readonly) NSArray *children;
+@end
 
 @interface OGGumboNode : NSObject
 @property (nonatomic,assign,readonly) OGGumboNodeType type;
-@property (nonatomic,weak,readonly) OGGumboNode *parent;
+@property (nonatomic,weak,readonly) OGGumboNode<OGGumboParentNode> *parent;
 - (NSString *)recursiveDescription;
 @end
 
-@interface OGGumboDocumentNode : OGGumboNode
+@interface OGGumboDocumentNode : OGGumboNode <OGGumboParentNode>
 @property (nonatomic,strong,readonly) NSString *doctypeName;
 @property (nonatomic,strong,readonly) NSString *doctypePublicIdentifier;
 @property (nonatomic,strong,readonly) NSString *doctypeSystemIdentifier;
-@property (nonatomic,strong,readonly) NSArray *children;
 @property (nonatomic,strong,readonly) NSString *text;
 @end
 
-@interface OGGumboElementNode : OGGumboNode
+@interface OGGumboElementNode : OGGumboNode <OGGumboParentNode>
 @property (nonatomic,assign,readonly) OGGumboTagNamespace namespace;
 @property (nonatomic,assign,readonly) OGGumboTag tag;
 @property (nonatomic,strong,readonly) NSArray *attributes;
-@property (nonatomic,strong,readonly) NSArray *children;
 @property (nonatomic,strong,readonly) NSString *text;
 @end
 
@@ -220,8 +221,7 @@ typedef NS_ENUM(NSUInteger, OGGumboAttributeNamespace) {
 @property (nonatomic,strong,readonly) NSString *text;
 @end
 
-@interface OGGumboWhitespaceNode : OGGumboNode
-@property (nonatomic,strong,readonly) NSString *text;
+@interface OGGumboWhitespaceNode : OGGumboTextNode
 @end
 
 
