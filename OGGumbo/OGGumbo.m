@@ -102,7 +102,7 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag);
     return nil;
 }
 
-- (id)initWithParser:(OGGumboParser *)parser parent:(OGGumboNode *)parent node:(GumboNode *)node {
+- (id)initWithParser:(OGGumboParser *)parser parent:(OGGumboNode<OGGumboParentNode> *)parent node:(GumboNode *)node {
     NSParameterAssert(node);
     if ((self = [super init])) {
         _parser = parser;
@@ -134,15 +134,10 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag);
     [recursiveDescription appendString:@"\n"];
 
     switch (node.type) {
-        case OGGumboNodeTypeDocument: {
-            OGGumboDocumentNode *document = (OGGumboDocumentNode *)node;
-            for (OGGumboNode *child in document.children) {
-                [self recursiveDescription:recursiveDescription appendNode:child indentation:indentation + 1];
-            }
-        } break;
+        case OGGumboNodeTypeDocument:
         case OGGumboNodeTypeElement: {
-            OGGumboElementNode *element = (OGGumboElementNode *)node;
-            for (OGGumboNode *child in element.children) {
+            OGGumboNode<OGGumboParentNode> *parent = (OGGumboNode<OGGumboParentNode> *)node;
+            for (OGGumboNode *child in parent.children) {
                 [self recursiveDescription:recursiveDescription appendNode:child indentation:indentation + 1];
             }
         } break;
