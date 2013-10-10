@@ -10,6 +10,7 @@
 
 
 static NSString *NSStringFromOGGumboTag(OGGumboTag const tag);
+static NSString *NSStringFromOGGumboTagNamespace(OGGumboTagNamespace const namespace);
 
 
 @interface OGGumboNode ()
@@ -329,7 +330,9 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag);
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<%@:%p ns:%ld tag:%ld>", NSStringFromClass(self.class), self, (unsigned long)self.namespace, (unsigned long)self.tag];
+    NSString * const namespace = NSStringFromOGGumboTagNamespace(self.namespace) ?: [NSString stringWithFormat:@"%ld", (unsigned long)self.namespace];
+    NSString * const tag = NSStringFromOGGumboTag(self.tag) ?: [NSString stringWithFormat:@"%ld", (unsigned long)self.tag];
+    return [NSString stringWithFormat:@"<%@:%p ns:%@ tag:%@>", NSStringFromClass(self.class), self, namespace, tag];
 }
 
 - (NSString *)text {
@@ -450,6 +453,16 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag);
 
 @implementation OGGumboWhitespaceNode
 @end
+
+
+static NSString *NSStringFromOGGumboTagNamespace(OGGumboTagNamespace const namespace) {
+    switch (namespace) {
+        case OGGumboTagNamespaceHTML: return @"HTML";
+        case OGGumboTagNamespaceSVG: return @"SVG";
+        case OGGumboTagNamespaceMathML: return @"MATHML";
+    }
+    return nil;
+}
 
 
 static NSString *NSStringFromOGGumboTag(OGGumboTag const tag) {
