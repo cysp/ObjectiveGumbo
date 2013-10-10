@@ -9,7 +9,8 @@ before_install:
     - bundle install --path .bundle
 #before_script:
 #    - bundle exec rake -s analyze:${CI_PLATFORM}
-script: bundle exec rake -s test:${CI_PLATFORM}
+script: bundle exec rake -s build:${CI_PLATFORM}
+#script: bundle exec rake -s test:${CI_PLATFORM}
 #after_success:
 #    - bundle exec rake -s coveralls:${CI_PLATFORM}
 env:
