@@ -335,7 +335,7 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag);
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<%@:%p ns:%d tag:%d>", NSStringFromClass(self.class), self, self.namespace, self.tag];
+    return [NSString stringWithFormat:@"<%@:%p ns:%ld tag:%ld>", NSStringFromClass(self.class), self, (unsigned long)self.namespace, (unsigned long)self.tag];
 }
 
 - (NSString *)text {
