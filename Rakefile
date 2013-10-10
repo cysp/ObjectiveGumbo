@@ -39,6 +39,17 @@ namespace :analyze do
   task :mac do Mac.analyze or fail end
 end
 
+desc "Compile #{PROJECTNAME}-iOS and -mac"
+task :build => [ 'ios', 'mac' ].map { |x| 'build:' + x }
+
+namespace :build do
+  desc "Compile #{PROJECTNAME}-iOS"
+  task :ios do IosSim.build or fail end
+
+  desc "Compile #{PROJECTNAME}-mac"
+  task :mac do Mac.build or fail end
+end
+
 desc "Execute #{PROJECTNAME}Tests-iOS and -mac"
 task :test => [ 'ios', 'mac' ].map { |x| 'test:' + x }
 
@@ -81,6 +92,10 @@ module BuildCommands
 
   def analyze
     Xctool.exec(@xctool_args, 'analyze', ['-failOnWarnings'])
+  end
+
+  def build
+    Xctool.exec(@xctool_args, 'build')
   end
 
   def test
