@@ -436,25 +436,7 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag);
 }
 @end
 
-@implementation OGGumboCDATANode {
-@private
-    NSString *_text;
-    BOOL _fetched;
-}
-- (NSString *)text {
-    [self stg_fetchIfNecessary];
-    return _text;
-}
-- (void)stg_fetchIfNecessary {
-    if (!_fetched) {
-        GumboText const text = _node->v.text;
-        _text = [[NSString alloc] initWithUTF8String:text.text];
-        _fetched = YES;
-    }
-}
-- (NSString *)description {
-    return [NSString stringWithFormat:@"<%@:%p text:%@>", NSStringFromClass(self.class), self, self.text];
-}
+@implementation OGGumboCDATANode
 @end
 
 @implementation OGGumboCommentNode {
@@ -478,25 +460,7 @@ static NSString *NSStringFromOGGumboTag(OGGumboTag const tag);
 }
 @end
 
-@implementation OGGumboWhitespaceNode {
-@private
-    NSString *_text;
-    BOOL _fetched;
-}
-- (NSString *)text {
-    [self stg_fetchIfNecessary];
-    return _text;
-}
-- (void)stg_fetchIfNecessary {
-    if (!_fetched) {
-        GumboText const text = _node->v.text;
-        _text = [[NSString alloc] initWithUTF8String:text.text];
-        _fetched = YES;
-    }
-}
-- (NSString *)description {
-    return [NSString stringWithFormat:@"<%@:%p text:%@>", NSStringFromClass(self.class), self, self.text];
-}
+@implementation OGGumboWhitespaceNode
 @end
 
 

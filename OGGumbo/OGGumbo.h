@@ -216,8 +216,7 @@ typedef NS_ENUM(NSUInteger, OGGumboAttributeNamespace) {
 @property (nonatomic,strong,readonly) NSString *text;
 @end
 
-@interface OGGumboCDATANode : OGGumboNode
-@property (nonatomic,strong,readonly) NSString *text;
+@interface OGGumboCDATANode : OGGumboTextNode
 @end
 
 @interface OGGumboCommentNode : OGGumboNode
