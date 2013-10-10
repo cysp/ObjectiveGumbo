@@ -7,8 +7,8 @@ before_install:
     - brew uninstall xctool
     - brew install xctool
     - bundle install --path .bundle
-before_script:
-    - bundle exec rake -s analyze:${CI_PLATFORM}
+#before_script:
+#    - bundle exec rake -s analyze:${CI_PLATFORM}
 script: bundle exec rake -s test:${CI_PLATFORM}
 #after_success:
 #    - bundle exec rake -s coveralls:${CI_PLATFORM}
